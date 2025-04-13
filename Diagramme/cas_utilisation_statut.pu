@@ -1,0 +1,17 @@
+
+@startuml
+title Cas d'utilisation : Mettre à jour le statut d'une commande
+
+actor Livreur
+
+rectangle "Système de Livraison de Repas" {
+  usecase "Se connecter" as UC1
+  usecase "Voir les commandes assignées" as UC2
+  usecase "Mettre à jour le statut" as UC3
+}
+
+Livreur --> UC1
+Livreur --> UC2
+Livreur --> UC3
+
+@enduml
