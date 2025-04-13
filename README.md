@@ -10,52 +10,9 @@
 
 ---
 
-## 🧾 1. Introduction
 
-Ce projet simule une plateforme de gestion de commandes pour un restaurant, incluant les interactions entre **clients**, **livreurs**, **gestionnaires**, et le **système de livraison**.
 
-L’objectif est de permettre la gestion :
-- des **utilisateurs** (création, connexion),
-- des **commandes** (création, suivi),
-- des **livraisons** (véhicule, statut),
-- et des **menus/items** proposés par le restaurant.
-
----
-
-## 📋 2. Spécifications du projet
-
-### 🔧 Notions de base & contraintes
-- **Commandes** : composées d’un ou plusieurs items.
-- **Utilisateurs** : clients, livreurs, gestionnaires.
-- **Livraison** : nécessite une adresse et un véhicule associé.
-- **Statut de commande** : en attente → en préparation → en livraison → livrée.
-- **Menu** : liste des items proposés par le restaurant.
-
----
-
-## 🎭 3. Acteurs et fonctionnalités
-
-### 👤 Client
-- Créer un compte et se connecter  
-- Parcourir le menu  
-- Passer une commande  
-- Suivre le statut de sa commande  
-
-### 🚚 Livreur
-- Se connecter  
-- Voir les commandes assignées  
-- Mettre à jour le statut des commandes  
-- Voir son véhicule assigné  
-
-### 🧑‍💼 Gestionnaire
-- Se connecter  
-- Ajouter/modifier des items du menu  
-- Gérer les utilisateurs  
-- Gérer les véhicules  
-
----
-
-## 🚀 4. Cas d'utilisation prioritaires (Sprint 1)
+## 🚀 1. Cas d'utilisation prioritaires (Sprint 1)
 
 | N° | Cas d’utilisation                        | Acteur   | Priorité |
 |----|------------------------------------------|----------|----------|
@@ -64,7 +21,7 @@ L’objectif est de permettre la gestion :
 
 ---
 
-## ✅ 5. Spécifications détaillées
+## ✅ 2. Spécifications détaillées
 
 ### 📌 Cas d'utilisation 1 : Passer une commande
 
