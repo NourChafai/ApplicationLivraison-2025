@@ -1,0 +1,19 @@
+
+@startuml
+actor Client
+participant "Customer" as Customer
+participant "Menu" as Menu
+participant "Order" as Order
+participant "Restaurant" as Restaurant
+
+Client -> Customer : consulterMenu()
+Customer -> Menu : afficherItems()
+Menu --> Customer : listeItems
+
+Client -> Customer : passerCommande(listeItems)
+Customer -> Order : new(listeItems)
+Customer -> Order : setStatut("En attente")
+Customer -> Restaurant : enregistrerCommande(order)
+Restaurant --> Customer : confirmation
+Customer --> Client : confirmationCommande()
+@enduml

@@ -1,0 +1,15 @@
+
+@startuml 
+actor Livreur
+participant "DeliveryPerson" as DP
+participant "Order" as Order
+participant "Client" as Client
+
+Livreur -> DP : consulterCommandesAssignées()
+DP --> Livreur : listeCommandes
+
+Livreur -> DP : changerStatutCommande(order, nouveauStatut)
+DP -> Order : setStatut(nouveauStatut)
+Order -> Client : notifierChangementStatut()
+DP --> Livreur : confirmationMiseAJour()
+@enduml
