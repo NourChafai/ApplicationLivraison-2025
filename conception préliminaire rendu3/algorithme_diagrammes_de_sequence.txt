@@ -1,0 +1,53 @@
+Algorithme PasserCommande
+Début
+    afficherMenu()
+    listeItems ← Customer.consulterMenu()
+
+    // Le client sélectionne des articles
+    commande ← new Order(listeItems)
+    commande.setStatut("En attente")
+
+    // Enregistrement de la commande
+    confirmation ← Restaurant.enregistrerCommande(commande)
+
+    afficher(confirmation)
+Fin
+
+Procédure afficherMenu
+Début
+    listeItems ← Menu.afficherItems()
+    retourner listeItems
+Fin
+
+
+ ------------------------------------------------------
+
+
+
+Algorithme MettreAJourStatutCommande
+Début
+    listeCommandes ← DeliveryPerson.consulterCommandesAssignées()
+
+    // Choix et mise à jour du statut
+    commande ← choisirCommande(listeCommandes)
+    nouveauStatut ← demanderNouveauStatut()
+    
+    commande.setStatut(nouveauStatut)
+
+    // Notification au client
+    commande.notifierChangementStatut()
+
+    afficher("Mise à jour effectuée avec succès")
+Fin
+
+Fonction choisirCommande(listeCommandes)
+Début
+    afficher(listeCommandes)
+    retourner commande sélectionnée
+Fin
+
+Fonction demanderNouveauStatut()
+Début
+    afficher("Entrez le nouveau statut :")
+    retourner saisie utilisateur
+Fin

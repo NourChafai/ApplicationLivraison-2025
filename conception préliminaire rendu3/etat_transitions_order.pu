@@ -1,0 +1,14 @@
+@startuml
+title Diagramme d'état-transitions - Classe Order
+
+[*] --> Pending : Nouvelle commande
+
+Pending --> Processing : Paiement confirmé\nCommande acceptée par le restaurant
+Processing --> Delivered : Commande livrée avec succès
+Processing --> Cancelled : Annulée par le client ou le restaurant
+Pending --> Cancelled : Annulation avant traitement
+
+Delivered --> [*]
+Cancelled --> [*]
+
+@enduml

@@ -1,0 +1,129 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+' === ENUMÉRATION ===
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  DELIVERED
+  CANCELLED
+}
+
+' === CLASSES ===
+class Gestionnaire {
+  +users : List<User>
+  +restaurants : List<Restaurant>
+  +modifyUsers() : void
+  +addRestaurant(r: Restaurant) : void
+  +removeRestaurant(r: Restaurant) : void
+}
+
+class User {
+  +id : int
+  +name : string
+  +email : string
+  +changeAddress(d: Address) : void
+}
+
+class Person {
+  +name : string
+  +address : Address
+  +phoneNumber : string
+}
+
+class Customer {
+  +id : int
+  +status : OrderStatus
+  +phoneNumber : string
+  +changeAddress(addr: Address) : void
+}
+
+class DeliveryPerson {
+  +vehicle : Vehicle
+  +assignOrder(order: Order) : void
+  +updateLocation(position: string) : void
+}
+
+class Restaurant {
+  +id : int
+  +status : OrderStatus
+  +address : Address
+  +menu : Menu
+  +items : List<Item>
+  +getMenu() : Menu
+  +filterMenu(category: string) : List<Item>
+  +addItem(item: Item) : void
+  +estimateDeliveryTime(customerAddress: Address) : int
+}
+
+class Order {
+  +id : int
+  +status : OrderStatus
+  +customer : Customer
+  +restaurant : Restaurant
+  +deliveryPerson : DeliveryPerson
+  +items : List<Item>
+  +modifyStatus(newStatus: OrderStatus) : void
+}
+
+class Item {
+  +id : int
+  +name : string
+  +price : decimal
+  +setPrice(price: decimal) : void
+}
+
+class Vehicle {
+  +id : int
+  +type : string
+  +model : string
+  +updateLocation() : void
+}
+
+class Menu {
+  +items : List<Item>
+  +addItem(item: Item) : void
+  +removeItem(item: Item) : void
+}
+
+class Address {
+  +street : string
+  +city : string
+  +state : string
+  +postalCode : string
+  +phoneCode : string
+}
+
+' === HÉRITAGE ===
+Customer --|> Person
+DeliveryPerson --|> Person
+User --|> Person
+
+' === ASSOCIATIONS ===
+Gestionnaire --> "1..*" User : gère
+Gestionnaire --> "0..*" Restaurant : gère
+User --> Address : possède
+Customer --> Order : passe
+Order --> Restaurant : concerne
+Order --> DeliveryPerson : pris en charge par
+Order --> "1..*" Item : contient
+Order --> OrderStatus : status
+Restaurant --> "1..*" Item : propose
+Restaurant --> Menu : contient
+DeliveryPerson --> Vehicle : utilise
+
+' === CONTRAINTES (NOTES) ===
+note right of Order
+  Une commande ne peut pas être livrée
+  sans un livreur assigné.
+end note
+
+note left of Order::items
+  Une commande doit contenir au moins un article.
+end note
+
+note top of Restaurant
+  Un restaurant doit avoir au moins un item actif.
+end note
+
+@enduml

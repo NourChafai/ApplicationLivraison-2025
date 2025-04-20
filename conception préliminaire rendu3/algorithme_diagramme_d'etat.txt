@@ -1,0 +1,38 @@
+VARIABLE statut : CHAINE
+VARIABLE livreurAssigné : BOOLEAN
+
+PROCÉDURE initialiserCommande()
+    statut ← "EnAttente"
+    livreurAssigné ← FAUX
+FIN PROCÉDURE
+
+PROCÉDURE confirmerPaiement()
+    SI statut = "EnAttente" ALORS
+        statut ← "EnCours"
+        AFFICHER "Commande en cours de traitement."
+    SINON
+        AFFICHER "Paiement déjà confirmé ou commande non valide."
+    FIN SI
+FIN PROCÉDURE
+
+PROCÉDURE annulerCommande()
+    SI statut = "EnAttente" OU statut = "EnCours" ALORS
+        statut ← "Annulée"
+        AFFICHER "Commande annulée avec succès."
+    SINON
+        AFFICHER "Impossible d'annuler la commande à ce stade."
+    FIN SI
+FIN PROCÉDURE
+
+PROCÉDURE livrerCommande()
+    SI statut = "EnCours" ET livreurAssigné = VRAI ALORS
+        statut ← "Livrée"
+        AFFICHER "Commande livrée avec succès."
+    SINON
+        AFFICHER "Impossible de livrer : commande non prête ou livreur non assigné."
+    FIN SI
+FIN PROCÉDURE
+
+PROCÉDURE assignerLivreur()
+    livreurAssigné ← VRAI
+FIN PROCÉDURE
