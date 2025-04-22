@@ -64,23 +64,6 @@
 
 ---
 
-## 📂 6. Organisation du projet Git
 
-```
-NomProjet/
-├── Diagrammes/
-│   ├── cas_utilisation.pu
-│   ├── cas_utilisation.png
-├── src/
-│   ├── Main.java
-│   ├── Commande.java
-│   ├── ...
-├── README.md
-```
 
----
 
-## 🔧 À faire pour le prochain Sprint :
-- Ajouter les cas d’utilisation secondaires
-- Intégrer les tests unitaires
-- Implémenter les modules en Java
